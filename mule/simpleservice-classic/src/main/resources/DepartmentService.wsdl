@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="DepartmentService"
+                  targetNamespace="http://whitehorses.nl/DepartmentService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:tns="http://whitehorses.nl/DepartmentService">
+ <wsdl:types>
+  <xsd:schema xmlns="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://whitehorses.nl/DepartmentService"
+           schemaLocation="DepartmentService.xsd"/>
+  </xsd:schema>
+ </wsdl:types>
+ <wsdl:message name="DepartmentServiceRequestMessage">
+  <wsdl:part name="in" element="tns:DepartmentServiceRequest"/>
+ </wsdl:message>
+ <wsdl:message name="DepartmentServiceResponseMessage">
+  <wsdl:part name="out" element="tns:DepartmentServiceResponse"/>
+ </wsdl:message>
+ <wsdl:portType name="GetDepartmentById">
+  <wsdl:operation name="getDepartmentById">
+   <wsdl:input message="tns:DepartmentServiceRequestMessage"/>
+   <wsdl:output message="tns:DepartmentServiceResponseMessage"/>
+  </wsdl:operation>
+ </wsdl:portType>
+ <wsdl:binding name="GetDepartmentByIdSoap12" type="tns:GetDepartmentById">
+  <soap12:binding transport="http://schemas.xmlsoap.org/soap/http"
+                  style="document"/>
+  <wsdl:operation name="getDepartmentById">
+   <soap12:operation soapAction="http://whitehorses.nl/DepartmentService/GetDepartmentById"
+                     style="document"/>
+   <wsdl:input>
+    <soap12:body use="literal" parts="in"/>
+   </wsdl:input>
+   <wsdl:output>
+    <soap12:body use="literal" parts="out"/>
+   </wsdl:output>
+  </wsdl:operation>
+ </wsdl:binding>
+ <wsdl:service name="DepartmentService">
+  <wsdl:port binding="tns:GetDepartmentByIdSoap12" name="GetDepartmentByIdSoap12">
+   <soap12:address location="http://www.example.org/" />
+  </wsdl:port>
+ </wsdl:service>
+</wsdl:definitions>

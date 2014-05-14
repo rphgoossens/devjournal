@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+        targetNamespace="http://whitehorses.nl/DepartmentService"
+        xmlns:tns="http://whitehorses.nl/DepartmentService"
+        xmlns="http://www.w3.org/2001/XMLSchema">
+ <element name="DepartmentServiceRequest">
+  <complexType>
+   <sequence>
+    <element name="DepartmentId" type="int"/>
+   </sequence>
+  </complexType>
+ </element>
+ <element name="DepartmentServiceResponse">
+  <complexType>
+   <sequence>
+    <element name="Department" type="tns:departmentType" maxOccurs="1"
+             minOccurs="0"/>
+   </sequence>
+  </complexType>
+ </element>
+ <complexType name="departmentType">
+  <sequence>
+   <element name="DepartmentId" type="int"/>
+   <element name="DepartmentName" type="string"/>
+  </sequence>
+ </complexType>
+</schema>
